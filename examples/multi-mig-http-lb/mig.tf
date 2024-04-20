@@ -99,7 +99,7 @@ module "mig2" {
 resource "google_compute_autoscaler" "mig2_autoscaler" {
   name   = "${var.network_prefix}-group2-autoscaler"
   zone   = "us-east1-b"
-  target = module.mig2.self_link
+  target = "${module.mig2.self_link}"
   autoscaling_policy {
     min_replicas    = 1
     max_replicas    = 5
