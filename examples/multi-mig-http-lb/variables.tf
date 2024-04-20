@@ -15,7 +15,8 @@
  */
 
 variable "project" {
-  type = string
+  type    = string
+  default = "handsonterraform"
 }
 
 variable "target_size" {
