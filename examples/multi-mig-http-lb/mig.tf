@@ -98,7 +98,7 @@ module "mig2" {
 
 resource "google_compute_autoscaler" "mig2_autoscaler" {
   name   = "${var.network_prefix}-group2-autoscaler"
-  target = module.mig2.instance_group_manager_id
+  target = module.mig2.id
   autoscaling_policy {
     min_replicas    = 1
     max_replicas    = 5
