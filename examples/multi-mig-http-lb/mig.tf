@@ -95,3 +95,17 @@ module "mig2" {
   network    = google_compute_network.default.self_link
   subnetwork = google_compute_subnetwork.group2.self_link
 }
+
+resource "google_compute_autoscaler" "mig2_autoscaler" {
+  name   = "${var.network_prefix}-group2-autoscaler"
+  target = google_compute_instance_group_manager.mig2.id
+  autoscaling_policy {
+    min_replicas    = 1
+    max_replicas    = 5
+    cooldown_period = 10
+
+    cpu_utilization {
+      target = 0.1
+    }
+  }
+
