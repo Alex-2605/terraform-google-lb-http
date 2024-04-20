@@ -108,4 +108,4 @@ resource "google_compute_autoscaler" "mig2_autoscaler" {
       target = 0.1
     }
   }
-
+}
