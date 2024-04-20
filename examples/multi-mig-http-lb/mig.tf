@@ -103,7 +103,7 @@ resource "google_compute_autoscaler" "mig2_autoscaler" {
   autoscaling_policy {
     min_replicas    = 1
     max_replicas    = 5
-    cooldown_period = 10
+    cooldown_period = 15
 
     cpu_utilization {
       target = 0.1
