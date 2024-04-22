@@ -22,7 +22,8 @@ variable "network_prefix" {
   type    = string
   default = "multi-mig-lb-http"
 }
-/* variable "autoscaling_cpu" {
+
+variable "autoscaling_cpu" {
   description = "Autoscaling, cpu utilization policy block as single element array."
   type        = list(object({
     target            = number
@@ -30,5 +31,5 @@ variable "network_prefix" {
   }))
   default     = []
 }
- */
+
 
