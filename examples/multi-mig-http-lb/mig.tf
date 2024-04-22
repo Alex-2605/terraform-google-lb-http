@@ -1,19 +1,3 @@
-/**
- * Copyright 2017 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 provider "google" {
   project = var.project
 }
@@ -96,17 +80,32 @@ module "mig2" {
   subnetwork = google_compute_subnetwork.group2.self_link
 }
 
-resource "google_compute_autoscaler" "mig2_autoscaler" {
-  name   = "${var.network_prefix}-group2-autoscaler"
-  zone   = "us-east1-b"
-  target = "${module.mig2.self_link}"
-  autoscaling_policy {
-    min_replicas    = 1
-    max_replicas    = 5
-    cooldown_period = 15
+/* module "mig2" {
+  source            = "terraform-google-modules/vm/google//modules/mig"
+  version           = "~> 7.9"
+  instance_template = module.mig2_template.self_link
+  region            = var.group2_region
+  hostname          = "${var.network_prefix}-group2"
+  target_size       = var.target_size
+  named_ports = [{
+    name = "http",
+    port = 80
+  }]
+  network    = google_compute_network.default.self_link
+  subnetwork = google_compute_subnetwork.group2.self_link
+} */
 
-    cpu_utilization {
-      target = 0.1
-    }
-  }
-}
+
+/*   autoscaling_enabled =   true
+  autoscaling_cpu = [{
+    target            = 0.1
+  }]
+  min_replicas    = 2
+  max_replicas    = 10
+  cooldown_period = 15 */
+
+
+
+
+
+
