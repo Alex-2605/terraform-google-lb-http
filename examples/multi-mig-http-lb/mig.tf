@@ -81,11 +81,11 @@ module "mig2" {
 
   autoscaling_enabled =   true
   autoscaling_cpu = [{
-    target            = 0.06
+    target            = 0.08
   }]
   min_replicas    = 1
   max_replicas    = 10
-  cooldown_period = 15
+  cooldown_period = 20
 }
 
 
