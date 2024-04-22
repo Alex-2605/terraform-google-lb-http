@@ -78,6 +78,14 @@ module "mig2" {
   }]
   network    = google_compute_network.default.self_link
   subnetwork = google_compute_subnetwork.group2.self_link
+
+  autoscaling_enabled =   true
+  autoscaling_cpu = [{
+    target            = 0.1
+  }]
+  min_replicas    = 2
+  max_replicas    = 10
+  cooldown_period = 15
 }
 
 /* module "mig2" {
