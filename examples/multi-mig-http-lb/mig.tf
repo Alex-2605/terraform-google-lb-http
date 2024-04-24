@@ -81,7 +81,7 @@ module "mig2" {
 
   autoscaling_enabled =   true
   autoscaling_cpu = [{
-    target            = 0.08
+    target            = 0.1
   }]
   min_replicas    = 2
   max_replicas    = 10
